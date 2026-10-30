@@ -1,8 +1,11 @@
 node_modules/
 evidence/
+.DS_Store
 .env
 .env.*
-.dev.vars*
 *.log
-.DS_Store
 __pycache__/
+*.pyc
+.dev.vars
+.dev.vars.*
+.wrangler/

@@ -1,0 +1,22 @@
+name: bienestar-sesion1
+services:
+  workshop:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    init: true
+    user: node
+    working_dir: /workspaces/bienestar
+    command: sleep infinity
+    ports:
+      - "127.0.0.1:4180:4173"
+    environment:
+      CLAUDE_CONFIG_DIR: /home/node/.claude
+      DISABLE_AUTOUPDATER: "1"
+    volumes:
+      - .:/workspaces/bienestar
+      - dependencies:/workspaces/bienestar/node_modules
+      - claude_config:/home/node/.claude
+volumes:
+  dependencies:
+  claude_config:
