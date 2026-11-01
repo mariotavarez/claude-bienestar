@@ -2,12 +2,12 @@ import {spawn} from 'node:child_process';
 import {existsSync} from 'node:fs';
 const insideContainer = existsSync('/.dockerenv');
 const viteArguments = ['node_modules/vite/bin/vite.js', '--config', 'vite.config.ts'];
-if (!insideContainer) viteArguments.push('--host', '127.0.0.1', '--port', '4180');
+if (!insideContainer) viteArguments.push('--host', '127.0.0.1', '--port', '4182');
 const processes = [
   spawn(process.execPath, ['server/api.mjs'], {stdio: 'inherit'}),
   spawn(process.execPath, viteArguments, {stdio: 'inherit'})
 ];
-console.log('Open the panel at http://127.0.0.1:4180');
+console.log('Open the panel at http://127.0.0.1:4182');
 let shuttingDown = false;
 function shutdown(exitCode = 0) {
   if (shuttingDown) return;

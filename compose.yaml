@@ -1,4 +1,4 @@
-name: bienestar-sesion1
+name: bienestar-modulo2
 services:
   workshop:
     build:
@@ -9,7 +9,7 @@ services:
     working_dir: /workspaces/bienestar
     command: sleep infinity
     ports:
-      - "127.0.0.1:4180:4173"
+      - "127.0.0.1:4182:4173"
     environment:
       CLAUDE_CONFIG_DIR: /home/node/.claude
       DISABLE_AUTOUPDATER: "1"

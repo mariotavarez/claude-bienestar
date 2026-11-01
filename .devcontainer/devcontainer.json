@@ -1,5 +1,5 @@
 {
-  "name": "Bienestar Sesión 1",
+  "name": "Bienestar Módulo 2",
   "workspaceFolder": "/workspaces/bienestar",
   "remoteUser": "node",
   "postCreateCommand": "bash .devcontainer/setup.sh",
@@ -29,15 +29,15 @@
   "runArgs": [
     "--init",
     "--publish",
-    "127.0.0.1:4180:4173"
+    "127.0.0.1:4182:4173"
   ],
   "containerEnv": {
     "CLAUDE_CONFIG_DIR": "/home/node/.claude",
     "DISABLE_AUTOUPDATER": "1"
   },
   "mounts": [
-    "source=bienestar-sesion1_dependencies,target=/workspaces/bienestar/node_modules,type=volume",
-    "source=bienestar-sesion1_claude_config,target=/home/node/.claude,type=volume"
+    "source=bienestar-modulo2_dependencies,target=/workspaces/bienestar/node_modules,type=volume",
+    "source=bienestar-modulo2_claude_config,target=/home/node/.claude,type=volume"
   ],
   "overrideCommand": false
 }

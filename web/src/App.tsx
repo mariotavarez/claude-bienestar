@@ -1,11 +1,12 @@
 import {useEffect, useState} from 'react';
-import {filterOperations} from './filter';
+import {selectOperations} from './selection';
 import type {Operation} from './types';
 import {Dashboard} from './components/Dashboard';
 
 export function App() {
   const [operations, setOperations] = useState<Operation[]>([]);
-  const [segment, setSegment] = useState('all');
+  const [segment, setSegment] = useState('tech');
+  const [operationStatus, setOperationStatus] = useState('confirmed');
   const [status, setStatus] = useState('loading');
 
   useEffect(() => {
@@ -21,12 +22,14 @@ export function App() {
       .catch(() => setStatus('error'));
   }, []);
 
-  const visibleOperations = filterOperations(operations, segment);
+  const visibleOperations = selectOperations(operations, {segment, status:operationStatus});
 
   return <Dashboard
     operations={operations}
     visibleOperations={visibleOperations}
     segment={segment}
+    operationStatus={operationStatus}
+    onStatusChange={setOperationStatus}
     onSegmentChange={setSegment}
     status={status}
   />;

@@ -1,19 +1,15 @@
-# Mi primer diagnóstico
+# Evidencia · Módulo 2
 
-## Qué intenté hacer
-Pendiente de completar.
+- Nombre:
+- Ruta elegida: Web / Datos
+- Petición que convertí en criterios:
+- Archivos que Claude leyó:
+- Plan que revisé y autoricé:
+- Archivo y función que cambiaron:
+- Una prueba que fallaba antes y pasa después:
+- Resultado visible y por qué es el esperado:
+- Qué comprobé yo además de lo que dijo Claude:
+- Qué quedó pendiente o fuera del alcance:
+- Qué podría hacer sin ayuda la próxima vez:
 
-## Qué observé antes del cambio
-Pendiente de completar con cantidades, IDs e importe.
-
-## Qué esperaba ver y por qué
-Pendiente de completar con la fuente consultada.
-
-## Archivos relacionados
-Pendiente de completar.
-
-## Plan acordado
-Pendiente de completar antes de pedir una edición.
-
-## Qué cambió y qué observé después
-Pendiente de completar con la ruta del reporte guardado.
+No incluir contraseñas, tokens ni datos reales del trabajo.
