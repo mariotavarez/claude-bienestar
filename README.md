@@ -2,6 +2,10 @@
 
 Autor: Mario Josue Tavarez Mendoza · Mentor9
 
+## ¿No puedes instalar Docker?
+
+**Puedes realizar esta práctica dentro de VS Code sin Docker.** Abre [Instalación > Sin Docker](https://imaginatec.tech/aula/?herramienta=manual#instalacion) o descarga la [guía PDF sin Docker](https://imaginatec.tech/materiales/Guia_Sin_Docker_Claude.pdf). Sigue la alternativa manual de este README. `LOCAL COMPUTER` es el entorno correcto para esa ruta; no tienes que abrir un contenedor. Node, Python, Git y Claude se instalan en tu computadora. Si tampoco puedes instalar herramientas locales, acuerda con el mentor el simulador o trabajo en pareja en un equipo autorizado.
+
 ## Qué haremos
 
 Abrir Orbit, un panel de React con datos ficticios, e investigar con Claude Code un **defecto intencional del filtro**. Al seleccionar Tecnología deben quedar dos operaciones por $1,650.00; al inicio aparecen las seis por $3,600.00. Conservaremos los datos y corregiremos únicamente la regla de filtrado.
