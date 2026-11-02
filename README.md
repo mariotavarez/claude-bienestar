@@ -4,6 +4,10 @@
 
 Continúa después del módulo 1. Aquí su filtro ya está corregido; tu copia anterior no se modifica. Aprenderás a pedir a **Claude Code** un cambio delimitado, revisar el plan y comprobarlo con pruebas. Elige una ruta: **React/TypeScript** o **Python/SQL**. La otra queda como consulta opcional.
 
+## ¿No puedes instalar Docker?
+
+**Puedes realizar esta práctica dentro de VS Code sin Docker.** Abre [Instalación > Sin Docker](https://imaginatec.tech/aula/?herramienta=manual#instalacion) o descarga la [guía PDF sin Docker](https://imaginatec.tech/materiales/Guia_Sin_Docker_Claude.pdf). Sigue la alternativa manual de este README. `LOCAL COMPUTER` es el entorno correcto para esa ruta; no tienes que abrir un contenedor. Node, Python, Git y Claude se instalan en tu computadora. Si tampoco puedes instalar herramientas locales, acuerda con el mentor el simulador o trabajo en pareja en un equipo autorizado.
+
 ## 1. Obtén esta rama o el ZIP
 
 Repositorio: https://github.com/mariotavarez/claude-bienestar · rama `modulo-2`.
