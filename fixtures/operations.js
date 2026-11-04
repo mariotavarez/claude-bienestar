@@ -1,0 +1,58 @@
+const ORBIT_FIXTURE = {
+  "generatedAt": "2026-10-01T00:00:00Z",
+  "currency": "MXN",
+  "operations": [
+    {
+      "id": "OP001",
+      "date": "2026-10-01",
+      "segment": "tech",
+      "amount_cents": 120000,
+      "status": "confirmed",
+      "label": "Tecnología"
+    },
+    {
+      "id": "OP002",
+      "date": "2026-10-02",
+      "segment": "home",
+      "amount_cents": 80000,
+      "status": "confirmed",
+      "label": "Hogar"
+    },
+    {
+      "id": "OP003",
+      "date": "2026-10-03",
+      "segment": "tech",
+      "amount_cents": 45000,
+      "status": "pending",
+      "label": "Tecnología"
+    },
+    {
+      "id": "OP004",
+      "date": "2026-10-04",
+      "segment": "sports",
+      "amount_cents": 65000,
+      "status": "confirmed",
+      "label": "Deporte"
+    },
+    {
+      "id": "OP005",
+      "date": "2026-10-05",
+      "segment": "home",
+      "amount_cents": 20000,
+      "status": "confirmed",
+      "label": "Hogar"
+    },
+    {
+      "id": "OP006",
+      "date": "2026-10-06",
+      "segment": "sports",
+      "amount_cents": 30000,
+      "status": "pending",
+      "label": "Deporte"
+    }
+  ],
+  "summary": {
+    "count": 6,
+    "total_cents": 360000
+  }
+};
