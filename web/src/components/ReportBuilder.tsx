@@ -1,13 +1,17 @@
-import type {Operation} from '../types';
-import './report-starter.css';
-
-// Build your report here with Claude. Keep the operations prop as its data source.
-export function ReportBuilder({operations}:{operations:Operation[]}) {
- return <section className="report-starter">
-  <span>ORBIT / TU NUEVA FUNCIÓN</span>
-  <h2>Aquí empieza tu reporte.</h2>
-  <p>Tienes {operations.length} operaciones de práctica. Decide qué quieres comunicar y pide a Claude tu primera propuesta.</p>
-  <div><article><b>01</b><h3>Diseña</h3><p>Elige destinatario, título y presentación.</p></article><article><b>02</b><h3>Construye</h3><p>Métricas, barras y un resumen con tus datos.</p></article><article><b>03</b><h3>Comparte</h3><p>Copia el resumen y descarga un CSV.</p></article></div>
-  <footer>Tu espacio de trabajo: <code>web/src/components/ReportBuilder.tsx</code><br/>Abre el paso 3 del aula para conversar con Claude.</footer>
- </section>;
+import React,{useState} from 'react';
+import {buildReport,money,reportCsv} from './report';
+import type {ReportOperation,ReportScope} from './report';
+import './report.css';
+export function ReportBuilder({operations,example=false}:{operations:ReportOperation[];example?:boolean}) {
+ const [scope,setScope]=useState<ReportScope>('all'),[layout,setLayout]=useState('editorial'),[message,setMessage]=useState('');
+ const report=buildReport(operations,scope);
+ async function copy(){try{await navigator.clipboard.writeText(report.summary);setMessage('Resumen copiado.')}catch{setMessage('Selecciona el texto del resumen y cópialo manualmente.')}}
+ function download(){const url=URL.createObjectURL(new Blob([reportCsv(report.rows)],{type:'text/csv;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`orbit-reporte-${scope}.csv`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);setMessage('CSV preparado con las operaciones de esta selección.');}
+ return <section className={'executive-report er-'+layout} aria-label="Reporte ejecutivo de Orbit">
+  <header className="er-header"><div><span className="er-kicker">ORBIT / {example?'REFERENCIA INTERACTIVA':'REPORTE EJECUTIVO'}</span><h3>Los datos cuentan <br/>una historia.</h3><p>Un panorama para decidir qué sigue.</p></div><span className="er-stamp">{String(operations.length).padStart(2,'0')}<br/><small>REGISTROS DE PRÁCTICA</small></span></header>
+  <div className="er-controls"><label>Qué quieres mostrar<select value={scope} onChange={e=>{setScope(e.target.value as ReportScope);setMessage('')}}><option value="all">Vista general</option><option value="pending">Seguimiento de pendientes</option><option value="confirmed">Operaciones confirmadas</option></select></label><fieldset><legend>Presentación</legend>{[['editorial','Editorial'],['compact','Compacta']].map(([id,label])=><button key={id} aria-pressed={layout===id} onClick={()=>setLayout(id)}>{label}</button>)}</fieldset></div>
+  <div className="er-metrics" aria-live="polite"><article><span>Importe del reporte</span><strong>{money(report.total)}</strong><small>MXN · {report.label.toLowerCase()}</small></article><article><span>Operaciones</span><strong>{String(report.rows.length).padStart(2,'0')}</strong><small>Incluidas en esta selección</small></article><article><span>Por confirmar</span><strong>{money(report.pending)}</strong><small>MXN · estado pendiente</small></article></div>
+  <div className="er-body"><section className="er-chart"><span className="er-kicker">DISTRIBUCIÓN DEL IMPORTE</span><h4>¿Dónde se concentra?</h4>{report.groups.map(group=><div className={'er-bar er-'+group.id} key={group.id}><div><span>{group.label}</span><strong>{money(group.cents)}</strong></div><div className="er-track"><span style={{width:(report.total?group.cents/report.total*100:0)+'%'}}/></div><small>{report.total?Math.round(group.cents/report.total*100):0}% del importe</small></div>)}</section><section className="er-summary"><span className="er-kicker">LISTO PARA COMPARTIR</span><h4>Tu resumen en un párrafo.</h4><p>{report.summary}</p><button onClick={copy}>Copiar resumen <span aria-hidden="true">↗</span></button><small>Calculado con las filas seleccionadas.</small></section></div>
+  <footer className="er-footer"><span>{example?'Ejemplo del resultado · no modifica tu proyecto':'Datos ficticios del laboratorio'}</span><button onClick={download} disabled={!report.rows.length}>Descargar CSV ↓</button></footer><p className="er-message" role="status">{message}</p>
+ </section>
 }

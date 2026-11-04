@@ -1,4 +1,6 @@
-# Módulo 2 · Dale una nueva habilidad a Orbit
+# Módulo 2 · Solución de referencia de Orbit
+
+Esta rama contiene el reporte completo dentro del mismo Orbit. Para realizar el taller desde su punto inicial usa [`modulo-2`](https://github.com/mariotavarez/claude-bienestar/tree/modulo-2). Aquí puedes comparar la implementación al terminar; no reemplaces tu trabajo sin revisar las diferencias.
 
 Taller de dos horas: construye un reporte ejecutivo con Claude Code dentro del Orbit existente. Todos seguimos la misma práctica en React/TypeScript. No tienes que elegir Python ni cambiar de proyecto.
 
@@ -30,9 +32,9 @@ El ZIP del aula contiene la misma base de `modulo-2`, sin historial Git. Extráe
 5. Abre una segunda terminal en la misma carpeta e inicia `claude --permission-mode plan`. Necesitas tu propio acceso a Claude Code o trabajar en pareja.
 
 ## Qué construir
-En `web/src/components/ReportBuilder.tsx` ya tienes una pantalla inicial que recibe `operations`. Con Claude agrega selector General/Pendientes/Confirmadas, métricas, barras por segmento, resumen copiable y CSV. El diseño es tu decisión. El contrato está en `docs/report-brief.md`.
+El reporte de referencia en `web/src/components/ReportBuilder.tsx` ya incluye selector General/Pendientes/Confirmadas, métricas, barras, presentación editorial/compacta, resumen copiable y descarga CSV. Sigue usando la prop `operations` de Orbit. El contrato está en `docs/report-brief.md`.
 
-La base funciona desde el inicio. Sus pruebas no certifican el reporte que todavía construirás: pide pruebas nuevas para sus cálculos, vacío y exportación. No modifiques fixtures ni elimines pruebas para esconder fallos.
+`npm test` ejecuta 12 pruebas de base, selección y reporte. Cubren importes, selección, datos vacíos, inmutabilidad y escape del CSV. `npm run typecheck` comprueba TypeScript. Copiar, descargar, navegar con teclado y revisar el móvil requieren además comprobación manual. No modifiques fixtures ni elimines pruebas para esconder fallos.
 
 ## Archivos
 - `web/src/components/Dashboard.tsx`: navegación e integración del reporte.
