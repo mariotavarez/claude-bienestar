@@ -1,171 +1,44 @@
-# Módulo 2 · Desarrollar y refactorizar con Claude
+# Módulo 2 · Dale una nueva habilidad a Orbit
 
-**Bienestar GS · Mario Josue Tavarez Mendoza / Mentor9**
+Taller de dos horas: construye un reporte ejecutivo con Claude Code dentro del Orbit existente. Todos seguimos la misma práctica en React/TypeScript. No tienes que elegir Python ni cambiar de proyecto.
 
-Continúa después del módulo 1. Aquí su filtro ya está corregido; tu copia anterior no se modifica. Aprenderás a pedir a **Claude Code** un cambio delimitado, revisar el plan y comprobarlo con pruebas. Elige una ruta: **React/TypeScript** o **Python/SQL**. La otra queda como consulta opcional.
+## El mismo Orbit, una nueva vista
+Continuamos en [mariotavarez/claude-bienestar](https://github.com/mariotavarez/claude-bienestar), el repositorio del módulo 1. Conservamos la vista general, la tabla, la API, las seis operaciones y los filtros funcionando. La ampliación es **Reporte ejecutivo**, una nueva entrada en el menú existente. No crees otra aplicación ni reemplaces el panel.
 
-## ¿No puedes instalar Docker?
+| Rama | Para qué sirve |
+| --- | --- |
+| [`modulo-1`](https://github.com/mariotavarez/claude-bienestar/tree/modulo-1) | La práctica anterior, conservada con su historial. |
+| [`modulo-2`](https://github.com/mariotavarez/claude-bienestar/tree/modulo-2) | Base de este taller: Orbit funcionando y el espacio para construir tu reporte. |
+| [`modulo-2-solucion`](https://github.com/mariotavarez/claude-bienestar/tree/modulo-2-solucion) | Solución completa de referencia para comparar después de trabajar con Claude. |
 
-**Puedes realizar esta práctica dentro de VS Code sin Docker.** Abre [Instalación > Sin Docker](https://imaginatec.tech/aula/?herramienta=manual#instalacion) o descarga la [guía PDF sin Docker](https://imaginatec.tech/materiales/Guia_Sin_Docker_Claude.pdf). Sigue la alternativa manual de este README. `LOCAL COMPUTER` es el entorno correcto para esa ruta; no tienes que abrir un contenedor. Node, Python, Git y Claude se instalan en tu computadora. Si tampoco puedes instalar herramientas locales, acuerda con el mentor el simulador o trabajo en pareja en un equipo autorizado.
+### Si ya clonaste el repositorio
+En GitHub Desktop conserva primero tus cambios del módulo 1 en tu propia rama y haz commit. Después usa **Fetch origin → Current branch → modulo-2**. La rama del taller incluye la base corregida; tus personalizaciones permanecen en tu rama anterior. Compáralas antes de llevarlas al módulo 2. No uses reset ni fuerces el cambio de rama si Git avisa de cambios pendientes.
 
-## 1. Obtén esta rama o el ZIP
-
-Repositorio: https://github.com/mariotavarez/claude-bienestar · rama `modulo-2`.
-En GitHub Desktop: **File → Clone repository → URL**, introduce el repositorio, elige **Current branch → modulo-2**. Antes de cambiar una copia existente, guarda o haz commit de tus cambios del módulo 1; no uses reset para descartarlos. También puedes descargar el ZIP de este módulo desde la plataforma y descomprimirlo en una carpeta nueva.
-
-Con Git, para tener una carpeta independiente:
-
-```bash
-git clone --branch modulo-2 --single-branch https://github.com/mariotavarez/claude-bienestar.git bienestar-modulo-2
-```
+También puedes tener una segunda carpeta del mismo repositorio, sin alterar tu práctica anterior:
 
 ```bash
-cd bienestar-modulo-2
+git clone --branch modulo-2 https://github.com/mariotavarez/claude-bienestar.git bienestar-modulo-2
 ```
 
-Si descargaste ZIP, abre su carpeta en VS Code; **no ejecutes cd bienestar-modulo-2** si tu carpeta se llama diferente. Debes ver `package.json`, `README.md`, `web/` y `.devcontainer/`.
+El ZIP del aula contiene la misma base de `modulo-2`, sin historial Git. Extráelo en otra carpeta si eliges esa alternativa; no sobrescribas tu trabajo del módulo 1.
 
-## 2. Elige una sola instalación
+## Abre el laboratorio
+1. Abre en VS Code la carpeta de la rama `modulo-2` o del ZIP extraído. Debes ver `package.json`, `README.md` y `web/`.
+2. Usa tu instalación del módulo 1: con Docker, Reopen in Container; sin Docker, terminal local con Node 24.15 o posterior. No mezcles terminales de ambas instalaciones.
+3. En la raíz ejecuta `npm install`, después `npm test` y `npm run typecheck`.
+4. Inicia `npm run start`; déjalo encendido. Abre http://127.0.0.1:4182 y elige **Reporte ejecutivo**.
+5. Abre una segunda terminal en la misma carpeta e inicia `claude --permission-mode plan`. Necesitas tu propio acceso a Claude Code o trabajar en pareja.
 
-### Alternativa 1 · Dev Container
+## Qué construir
+En `web/src/components/ReportBuilder.tsx` ya tienes una pantalla inicial que recibe `operations`. Con Claude agrega selector General/Pendientes/Confirmadas, métricas, barras por segmento, resumen copiable y CSV. El diseño es tu decisión. El contrato está en `docs/report-brief.md`.
 
-Necesitas **Docker Desktop** abierto, **VS Code** y **Dev Containers de Microsoft**. Node, npm, Python y Git se preparan dentro de la imagen; Claude Code se instala también, pero requiere tu propio acceso compatible para conversar.
+La base funciona desde el inicio. Sus pruebas no certifican el reporte que todavía construirás: pide pruebas nuevas para sus cálculos, vacío y exportación. No modifiques fixtures ni elimines pruebas para esconder fallos.
 
-1. Abre esta carpeta en VS Code.
-2. Abre **Ver → Paleta de comandos**: **Cmd+Shift+P** en Mac o **Ctrl+Shift+P** en Windows/Linux. F1 también funciona si tu teclado lo permite.
-3. Busca **Dev Containers: Reopen in Container** y pulsa Enter.
-4. Espera la construcción. Abre una terminal nueva **en esa ventana**; abajo debe decir Dev Container y la ruta será `/workspaces/bienestar`.
-5. Ejecuta una orden por bloque:
+## Archivos
+- `web/src/components/Dashboard.tsx`: navegación e integración del reporte.
+- `web/src/components/ReportBuilder.tsx`: tu nuevo espacio de trabajo.
+- `fixtures/operations.json`: seis registros ficticios.
+- `web/src/selection.ts`: filtros existentes; conserva su comportamiento.
+- `docs/report-brief.md`: objetivo, valores y evidencia.
 
-```bash
-npm run status -- --container
-```
-
-```bash
-npm run start
-```
-
-Abre **http://127.0.0.1:4182**. Mantén esa terminal ejecutándose. El módulo 1 usa 4180: no mezcles los dos puertos. Si 4182 está ocupado, detén la otra copia de este módulo antes de reiniciar; no borres todos tus contenedores.
-
-### Alternativa 2 · Instalación manual
-
-Necesitas **VS Code**, **Node.js >=24.15.0 con npm**, **Python 3**, **Git** y **Claude Code** con acceso compatible. Aquí no necesitas Docker, Java ni PySpark. **SQLite** se usa desde `sqlite3` de Python y no requiere un servidor; verifica que tu distribución lo incluya.
-
-En la terminal integrada de VS Code, situada donde está `package.json`:
-
-```bash
-npm ci
-```
-
-```bash
-npm run status
-```
-
-```bash
-npm run start
-```
-
-Abre **http://127.0.0.1:4182**. Para detener, pulsa Ctrl+C. Para reabrir después, basta `npm run start`; no reinstales todo en cada clase. Si el chequeo dice Python/Claude ausente, confirma si estás usando tu equipo o el contenedor: las instalaciones pertenecen al entorno donde ejecutas.
-
-Las instrucciones por sistema están en **https://imaginatec.tech/aula/#instalacion**. Si Node/npm no aparecen, cierra y vuelve a abrir la terminal después de instalar. En Windows, los scripts del curso detectan `py -3`, `python3` o `python` automáticamente.
-
-## 3. Abre Claude en una segunda terminal
-
-En **Terminal → Nueva terminal**, dentro de la misma carpeta y entorno:
-
-```bash
-claude --permission-mode plan
-```
-
-Pide primero: «Lee CLAUDE.md, docs/acceptance.md y los archivos de mi ruta. Explica qué funciona y qué falta. No edites archivos». El modo de planificación ayuda a revisar antes de editar. Si necesita autenticación, complétala con tu cuenta autorizada; la contraseña de la plataforma no es una cuenta de Claude. Para implementar, revisa `/permissions`, cambia a un modo que solicite autorización y aprueba solo el alcance acordado. No uses bypass de permisos.
-
-## 4. Comprueba la base
-
-En una terminal que NO esté ejecutando el servidor ni la conversación de Claude:
-
-```bash
-npm run baseline
-```
-
-**Esperado: 4 pruebas correctas.** Si falla, resuelve primero carpeta, Node o dependencias; no es el defecto didáctico nuevo.
-
-## 5A. Ruta React/TypeScript
-
-Lee `docs/acceptance.md`, `web/src/App.tsx`, `web/src/selection.ts` y `tests/selection.test.mjs`. El selector Estado ya está conectado a React; la función todavía ignora ese valor. Verás Confirmadas pero aparecerá también OP003 pendiente.
-
-```bash
-npm run test:web
-```
-
-**Estado inicial esperado: 2 pruebas pasan y 3 fallan.** Pide a Claude que explique la diferencia entre expected y actual. Luego revisa su plan y permite cambiar `web/src/selection.ts` sin tocar los fixtures ni quitar assertions.
-
-Después:
-
-```bash
-npm run baseline
-```
-
-```bash
-npm run test:web
-```
-
-```bash
-npm run typecheck
-```
-
-```bash
-npm run coverage
-```
-
-Esperado: baseline 4/4, web 5/5, tipos sin errores. Cobertura muestra código ejecutado, no demuestra que falten cero errores. TypeScript verifica tipos, **no sustituye un linter ni las pruebas**. En proyectos con ESLint usa también su configuración; no necesitamos instalar uno nuevo para esta práctica.
-
-En el navegador comprueba Tecnología + Confirmadas, Todos + Pendientes, Hogar + Pendientes y Todos + Todos. Los totales esperados están en `docs/acceptance.md`.
-
-## 5B. Ruta Python/SQL
-
-Lee `fixtures/raw-operations.json`, `data/pipeline.py`, `data/tests/test_pipeline.py` y `docs/acceptance.md`.
-
-```bash
-npm run test:data
-```
-
-**Estado inicial esperado: 1 prueba pasa y 5 fallan.** No confundir un fallo de assertions con Python no instalado. Acuerda con Claude cómo normalizar, quitar solo copias idénticas y apartar conflictos sin inventar importes. Permite modificar solo `data/pipeline.py`.
-
-```bash
-npm run test:data
-```
-
-```bash
-npm run data
-```
-
-Esperado: 6 pruebas correctas y 9 filas reconciliadas: 5 limpias, 1 copia, 2 conflictos y 1 inválida. `data/report.py` crea SQLite **en memoria** y consulta Tecnología + Confirmadas con parámetros: 1 operación y 120000 centavos.
-
-## 6. Revisa y explica
-
-```bash
-git diff --stat
-```
-
-```bash
-git diff -- web/src/selection.ts data/pipeline.py
-```
-
-Completa `docs/my-diagnosis.md`. Puedes guardar comprobaciones de ambas rutas:
-
-```bash
-npm run evidence
-```
-
-Revisa `evidence/checks.json` antes de compartirlo: puede incluir rutas de tu equipo. Si solo hiciste una ruta, la otra puede seguir fallando y se debe señalar. La plataforma registra tus casillas y refuerzos; una casilla no certifica que Claude ejecutó tu proyecto.
-
-## Si algo falla
-
-- **Could not read package.json:** abre la carpeta raíz, no `web/` ni `data/`.
-- **Cannot find module:** ejecuta `npm ci` en esa carpeta, con Node compatible.
-- **Node antiguo:** verifica `node --version`; la prueba de TypeScript usa soporte de Node 24.
-- **Docker abierto pero falla Reopen:** abre el log de Dev Containers y comparte la primera línea de error útil, no solo «Exit code 1».
-- **Python no encuentra sqlite3:** revisa la instalación de Python o usa el Dev Container; no instales un paquete llamado sqlite3 desde npm.
-- **Sin acceso a Claude:** puedes leer el caso, practicar los prompts con el simulador del módulo 1 o trabajar en pareja; ese simulador no ejecuta este nuevo laboratorio.
-
-El contenido y los ejemplos pueden ajustarse según el grupo y las herramientas autorizadas.
+Los scripts y archivos Python se conservan como herramientas del laboratorio anterior; no son una ruta alternativa ni se usan para completar este taller. El módulo 2 actual y su ZIP se consultan en https://imaginatec.tech/sesion-2/.

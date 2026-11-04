@@ -1,10 +1,11 @@
-# Bienestar · Módulo 2
+# Orbit · Report workshop
 
-- Read the selected route, docs/acceptance.md, and the tests before editing.
-- Explain the plan and wait for permission before changing code.
-- Code, function names, scripts, and test descriptions use English. README and explanations use Spanish.
-- Preserve fixtures and passing baseline tests. Never remove an assertion to obtain a green result.
-- Web route: edit only web/src/selection.ts and the UI integration when explicitly required. Keep segment and status as independent conditions joined with AND. Keep amounts in integer cents. Do not mutate input.
-- Data route: edit data/pipeline.py. Do not guess null amounts. Drop only identical normalized duplicates. Quarantine every occurrence of a conflicting ID. Preserve counts and source indexes for reconciliation.
-- No network integrations, secrets, production data, MCP installation, or new packages are required for this lab.
-- The selected route is the required workshop. The second route is optional. Report checks you ran, failures that remain and files changed.
+- This workshop has one React/TypeScript project. Read docs/report-brief.md before editing.
+- Discuss the design and scope before implementation. Build inside web/src/components/ReportBuilder.tsx and dedicated helpers/styles/tests; keep the operations prop as source.
+- Extend the existing Orbit app with the Reporte ejecutivo view in its current navigation. Preserve the Orbit shell and visual identity; do not scaffold another app or replace the dashboard.
+- This is the same mariotavarez/claude-bienestar repository as module 1. Work on the module-2 continuation; preserve learners' earlier commits and local changes. modulo-2-solucion is the completed reference, not the workshop starting point.
+- Preserve API, existing dashboard/filter behavior and fixtures. No new dependencies or external AI API are required.
+- All calculations use integer cents; format pesos only at presentation/export boundaries. Do not mutate inputs.
+- Implement scope selection, metrics, segment bars, deterministic summary, clipboard feedback and CSV export. Support empty data, keyboard and 390px viewports.
+- Add meaningful report tests, run npm test and npm run typecheck. Never remove assertions or modify expected fixtures to hide failures.
+- Explain changed files, checks actually run, manual checks pending and limitations. Keep notes in docs/report-brief.md. Never include secrets or personal data.

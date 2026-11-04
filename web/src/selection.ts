@@ -1,11 +1,12 @@
 import type {Operation} from './types';
-import {filterOperations} from './filter.ts';
-
 export type Selection = {segment: string; status: string};
 
-// The segment filter works. The new status requirement is not implemented yet.
 export function selectOperations(operations: Operation[], selection: Selection) {
-  return filterOperations(operations, selection.segment);
+  return operations.filter(operation => {
+    const matchesSegment = selection.segment === 'all' || operation.segment === selection.segment;
+    const matchesStatus = selection.status === 'all' || operation.status === selection.status;
+    return matchesSegment && matchesStatus;
+  });
 }
 
 export function summarizeOperations(operations: Operation[]) {
