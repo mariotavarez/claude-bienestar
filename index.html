@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orbit · Laboratorio Bienestar GS</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="fixtures/operations.js"></script>
+  <script defer src="report.js"></script>
+  <script defer src="orbit.js"></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="#general"><span class="orbit-mark" aria-hidden="true">◎</span> orbit <small>LAB</small></a>
+    <div class="workspace"><span>BG</span><div><strong>Bienestar GS</strong><small>Espacio de aprendizaje</small></div></div>
+    <nav aria-label="Vistas de Orbit">
+      <a href="#general">Vista general</a>
+      <a href="#operaciones">Operaciones</a>
+      <a href="#datos">Fuente de datos</a>
+      <a href="#reporte">Reporte ejecutivo <small>Módulo 02</small></a>
+    </nav>
+    <p class="sidebar-note">Tu siguiente idea.<br><strong>Tu nuevo reporte.</strong><br><small>Datos ficticios para la práctica.</small></p>
+  </aside>
+  <div class="shell">
+    <header class="topbar"><span>Espacio de trabajo / <strong id="breadcrumb">Vista general</strong></span><button type="button" id="theme" aria-pressed="false">Modo oscuro</button></header>
+    <main>
+      <header class="heading">
+        <div><p class="eyebrow">DESARROLLO VERIFICABLE CON CLAUDE</p><h1 id="page-title">Vista general</h1></div>
+        <div class="filters" id="filters"></div>
+      </header>
+      <section id="overview" aria-label="Vista general">
+        <div class="banner"><strong>Tu misión</strong><p>Convierte las operaciones en un reporte que puedas comprobar y compartir.</p><a href="#reporte">Abrir Reporte ejecutivo →</a></div>
+        <div class="metrics" id="metrics"></div>
+        <section class="panel" aria-labelledby="segments-title"><p class="eyebrow">COMPOSICIÓN DEL IMPORTE</p><h2 id="segments-title">¿Qué segmentos ves?</h2><div id="segments" class="bars"></div></section>
+      </section>
+      <section class="panel" id="operations" aria-labelledby="operations-title">
+        <header class="panel-heading"><div><h2 id="operations-title">Operaciones</h2><p id="row-count" role="status"></p></div><label>Buscar operación <input id="search" type="search" placeholder="ID, segmento o estado"></label></header>
+        <div class="table-scroll"><table aria-labelledby="operations-title"><thead><tr><th scope="col">ID</th><th scope="col">Fecha</th><th scope="col">Segmento</th><th scope="col">Estado</th><th scope="col">Importe MXN</th></tr></thead><tbody id="operation-rows"></tbody></table></div>
+        <p id="no-rows" hidden>Sin operaciones para esta selección.</p>
+      </section>
+      <section class="panel" id="data" aria-labelledby="data-title" hidden><h2 id="data-title">Fuente de las operaciones</h2><p>Orbit lee una copia local de <code>fixtures/operations.json</code> cargada como JavaScript.</p><pre id="source"></pre></section>
+      <section id="report" aria-label="Reporte ejecutivo" hidden></section>
+      <footer>orbit / Laboratorio Bienestar GS <span>Datos ficticios · Módulo 02</span></footer>
+    </main>
+  </div>
+</body>
+</html>
