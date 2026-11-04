@@ -12,7 +12,15 @@ Continuamos en [mariotavarez/claude-bienestar](https://github.com/mariotavarez/c
 | [`modulo-2-solucion`](https://github.com/mariotavarez/claude-bienestar/tree/modulo-2-solucion) | Solución completa de referencia para comparar después de trabajar con Claude. |
 
 ### Si ya clonaste el repositorio
-En GitHub Desktop conserva primero tus cambios del módulo 1 en tu propia rama y haz commit. Después usa **Fetch origin → Current branch → modulo-2**. La rama del taller incluye la base corregida; tus personalizaciones permanecen en tu rama anterior. Compáralas antes de llevarlas al módulo 2. No uses reset ni fuerces el cambio de rama si Git avisa de cambios pendientes.
+1. Guarda tus archivos en VS Code. En GitHub Desktop confirma `claude-bienestar` y tu rama del módulo 1; pulsa **Fetch origin** para recibir las ramas publicadas.
+2. Si tienes cambios pendientes, crea `mi-modulo-1` desde la **rama actual**, no desde `main`. Si pregunta, lleva los cambios a esa nueva rama de respaldo.
+3. Revisa los archivos en **Changes** y haz commit con el mensaje `Guardar mi práctica del módulo 1`. Debe quedar **0 changed files** y el commit visible en **History**. Si ya tenías todo guardado en una rama propia, omite los pasos 2 y 3.
+4. Abre **Current Branch → modulo-2**. Si ya tenías esa rama local, pulsa **Fetch origin** y después **Pull origin** solo cuando indique nuevos commits.
+5. Abre la carpeta en VS Code. El README debe decir **Dale una nueva habilidad a Orbit**. Tu práctica anterior sigue en `mi-modulo-1` o en la rama donde la guardaste.
+
+No necesitas **Push origin** ni **Publish branch** para conservar el commit local; este respaldo queda en tu computadora. Si aparece el diálogo de cambios pendientes al pasar a `modulo-2`, cancela y completa el commit primero. No descartes cambios, no los lleves directamente a `modulo-2` y no uses **Update from main**. Esta rama ya incluye la base corregida; compara tus personalizaciones antes de incorporarlas.
+
+Referencia: [ramas en GitHub Desktop](https://docs.github.com/en/desktop/making-changes-in-a-branch/managing-branches-in-github-desktop) y [sincronizar una rama](https://docs.github.com/en/desktop/working-with-your-remote-repository-on-github-or-github-enterprise/syncing-your-branch-in-github-desktop).
 
 También puedes tener una segunda carpeta del mismo repositorio, sin alterar tu práctica anterior:
 
@@ -37,6 +45,7 @@ La base funciona desde el inicio. Sus pruebas no certifican el reporte que todav
 ## Archivos
 - `web/src/components/Dashboard.tsx`: navegación e integración del reporte.
 - `web/src/components/ReportBuilder.tsx`: tu nuevo espacio de trabajo.
+- `web/src/components/OrbitDropdown.tsx`: selector de Orbit reutilizable con sus estilos y navegación por teclado.
 - `fixtures/operations.json`: seis registros ficticios.
 - `web/src/selection.ts`: filtros existentes; conserva su comportamiento.
 - `docs/report-brief.md`: objetivo, valores y evidencia.
