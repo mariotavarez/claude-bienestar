@@ -1,6 +1,6 @@
 # Orbit · Módulo 2
 
-Continuación del Orbit de Bienestar GS. Mantiene Vista general, Operaciones, Fuente de datos y las seis operaciones ficticias. Esta es la solución de referencia. Abre Reporte ejecutivo para revisar métricas, gráfica, resumen y CSV.
+Continuación del Orbit de Bienestar GS. Mantiene Vista general, Operaciones, Fuente de datos y las seis operaciones ficticias. Esta es la solución de referencia. Abre Reporte ejecutivo para revisar métricas, gráfica, resumen y CSV, búsqueda combinada, detalle de operaciones y exportación Markdown.
 
 1. Descarga el ZIP o abre la rama `modulo-2` del mismo repositorio. Si trabajas con un ZIP, extráelo en otra carpeta para conservar tu práctica del módulo 1.
 2. Abre `index.html` con doble clic. En el menú de Orbit, elige **Reporte ejecutivo**.
