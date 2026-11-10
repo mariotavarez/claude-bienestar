@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "^(Edit|Write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "shell": "powershell",
+            "command": "Add-Content -LiteralPath \"$env:CLAUDE_PROJECT_DIR/docs/bitacora.md\" -Value \"- Edición realizada con Edit/Write. Revisar el diff.\" -Encoding utf8"
+          }
+        ]
+      }
+    ]
+  }
+}

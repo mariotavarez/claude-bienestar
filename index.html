@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f5ef" />
+    <meta name="description" content="Centro de operaciones para el simulacro de Misión Expo." />
+    <title>Misión Expo · Centro de operaciones</title>
+    <link rel="icon" href="logo.svg?v=3" type="image/svg+xml" />
+    <link rel="stylesheet" href="expo.css?v=12" />
+    <script src="datos.js?v=3" defer></script>
+    <script src="servicio.js" defer></script>
+    <script src="operaciones.js?v=2" defer></script>
+    <script src="expo.js?v=8" defer></script>
+  </head>
+  <body>
+    <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+      <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6" /></symbol>
+      <symbol id="i-alert" viewBox="0 0 24 24">
+        <path d="M12 8v5m0 4h.01" />
+        <path d="m10.2 4-8 14a2 2 0 0 0 1.8 3h16a2 2 0 0 0 1.8-3l-8-14a2 2 0 0 0-3.6 0Z" />
+      </symbol>
+      <symbol id="i-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="8" />
+        <path d="M12 8v4l2 2" />
+      </symbol>
+      <symbol id="i-ticket" viewBox="0 0 24 24">
+        <rect x="4" y="6" width="16" height="12" rx="2" />
+        <path d="M9 10h6m-6 4h3" />
+      </symbol>
+      <symbol id="i-stand" viewBox="0 0 24 24">
+        <path d="M4 10h16l-2-4H6l-2 4Zm2 0v8h12v-8m-8 8v-4h4v4" />
+      </symbol>
+      <symbol id="i-crew" viewBox="0 0 24 24">
+        <rect x="6" y="9" width="12" height="12" rx="2" />
+        <path d="M10 9V5h4v4m-4 7 1.5 1.5L15 14" />
+      </symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" /></symbol>
+      <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18" /></symbol>
+      <symbol id="i-link" viewBox="0 0 24 24">
+        <path
+          d="M10 13a4 4 0 0 0 6 .4l3-3a4 4 0 1 0-5.7-5.7l-1.5 1.5M14 11a4 4 0 0 0-6-.4l-3 3a4 4 0 1 0 5.7 5.7l1.5-1.5"
+        />
+      </symbol>
+    </svg>
+    <a class="skip" href="#contenido">Ir al contenido</a>
+    <div class="app-layout">
+      <aside class="sidebar">
+        <a class="brand" href="#contenido">
+          <img src="logo.svg?v=3" alt="" width="28" height="28" />
+          <span>Misión Expo</span>
+        </a>
+        <div class="sidebar-menu">
+          <p class="kicker">Recinto / Operación</p>
+          <nav class="site-nav" aria-label="Navegación">
+            <a href="#contenido" aria-current="location"
+              ><span aria-hidden="true">01</span> Tablero</a
+            >
+            <a href="#mapa"><span aria-hidden="true">02</span> Plano</a>
+            <a href="#actividad"><span aria-hidden="true">03</span> Bitácora</a>
+            <a href="#acreditaciones"><span aria-hidden="true">04</span> Acreditaciones</a>
+          </nav>
+        </div>
+        <div class="sidebar-footer">
+          <img src="imagenes/imaginatec.webp" alt="Imaginatec" width="340" height="131" />
+          <small>Laboratorio / Módulo 03</small>
+        </div>
+      </aside>
+      <header class="site-header">
+        <div class="shell topbar">
+          <p class="topbar-path">Centro de operaciones</p>
+          <div class="top-actions">
+            <span class="session-state" id="session-state"
+              ><span id="session-label">Simulación local</span></span
+            >
+            <button class="button button-outline" id="connection-open">
+              <svg aria-hidden="true"><use href="#i-link" /></svg
+              ><span id="connection-label">Conectar aula</span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <main id="contenido" tabindex="-1">
+        <section class="hero" aria-labelledby="headline">
+          <div class="hero-poster">
+            <p class="kicker">
+              <span>Simulacro de apertura</span><time datetime="2027-05">Mayo 2027</time>
+            </p>
+            <h1 id="headline">
+              Misión
+              <span
+                >Expo
+                <svg aria-hidden="true" viewBox="0 0 32 32">
+                  <path d="M3 5h6l8 11-8 11H3l8-11zm11 0h6l8 11-8 11h-6l8-11z" /></svg
+              ></span>
+            </h1>
+            <div class="hero-actions">
+              <button class="button button-primary" id="report-open">
+                <svg aria-hidden="true"><use href="#i-plus" /></svg> Reportar incidente
+              </button>
+              <a class="hero-map" href="#mapa"
+                >Ver plano <svg aria-hidden="true"><use href="#i-arrow" /></svg
+              ></a>
+            </div>
+          </div>
+          <figure class="hero-visual">
+            <img
+              src="imagenes/vivatech-pabellon.webp"
+              width="1650"
+              height="1100"
+              alt="Asistentes recorren los pabellones de VivaTech bajo una instalación de aros iluminados."
+              fetchpriority="high"
+            />
+            <figcaption>
+              <span>Archivo VivaTech, París 2025</span
+              ><span
+                ><a
+                  href="https://commons.wikimedia.org/wiki/File:Paris_-_Salon_VivaTech_2025_-_9.jpg"
+                  >© Peter Potrowl</a
+                >
+                / <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></span
+              >
+            </figcaption>
+          </figure>
+        </section>
+        <div class="shell">
+          <section class="metrics" aria-label="Resumen del recinto">
+            <header class="brief">
+              <p class="kicker">Coordinación / Recinto</p>
+              <h2>Antes de abrir</h2>
+              <p>Consulta el estado de los pabellones y prepara la llegada de tu equipo.</p>
+              <a class="brief-link" href="#acreditaciones"
+                >Ver acreditaciones <svg aria-hidden="true"><use href="#i-arrow" /></svg
+              ></a>
+            </header>
+            <dl class="metrics-figures">
+              <div>
+                <dt>Zonas operativas</dt>
+                <dd id="zones-ready">—</dd>
+              </div>
+              <div>
+                <dt>Incidentes abiertos</dt>
+                <dd id="incident-count">—</dd>
+              </div>
+              <div>
+                <dt>Incidentes resueltos</dt>
+                <dd id="resolved-count">—</dd>
+              </div>
+            </dl>
+          </section>
+          <div class="workspace">
+            <section id="mapa" class="map" aria-labelledby="map-title">
+              <header class="section-title">
+                <span class="section-number" aria-hidden="true">02</span>
+                <h2 id="map-title">Plano del recinto</h2>
+              </header>
+              <p class="section-intro">
+                Selecciona una zona para ver sus incidentes en la bitácora.
+              </p>
+              <div class="floorplan">
+                <div class="plan-header"><span>Planta 01</span><span>Esquema sin escala</span></div>
+                <div id="zone-grid" class="zone-grid">
+                  <div class="plan-hall" aria-hidden="true"><span>Pasillo central</span></div>
+                </div>
+                <div class="plan-entry" aria-hidden="true">
+                  <svg><use href="#i-arrow" /></svg> Acceso principal
+                </div>
+              </div>
+              <div class="map-caption">
+                <a href="#creditos">Fotografías de archivo</a>
+                <ul class="legend" aria-label="Estados de zona">
+                  <li class="status-mark status-ok">Operativa</li>
+                  <li class="status-mark status-watch">Atención</li>
+                  <li class="status-mark status-alert">Urgente</li>
+                </ul>
+              </div>
+            </section>
+            <section id="actividad" class="activity" aria-labelledby="activity-title">
+              <header class="section-title">
+                <span class="section-number" aria-hidden="true">03</span>
+                <h2 id="activity-title" tabindex="-1">Bitácora de incidentes</h2>
+              </header>
+              <div class="activity-panel">
+                <div class="activity-controls">
+                  <div class="filters" aria-label="Filtrar actividad">
+                    <button data-filter="all" type="button" aria-pressed="true">Todos</button>
+                    <button data-filter="open" type="button" aria-pressed="false">Abiertos</button>
+                    <button data-filter="resolved" type="button" aria-pressed="false">
+                      Resueltos
+                    </button>
+                    <button data-filter="urgent" type="button" aria-pressed="false">Urgentes abiertos</button>
+                  </div>
+                  <div id="zone-filter" hidden>
+                    <span></span
+                    ><button type="button" id="clear-zone" aria-label="Quitar filtro de zona">
+                      <svg aria-hidden="true"><use href="#i-close" /></svg>
+                    </button>
+                  </div>
+                  <button type="button" class="button activity-export" id="download-report" disabled>
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v10m-4-4 4 4 4-4M5 16v4h14v-4" /></svg>
+                    Descargar reporte CSV
+                  </button>
+                </div>
+                <div id="activity-list" class="activity-list"></div>
+              </div>
+            </section>
+            <section id="acreditaciones" class="admissions" aria-labelledby="admissions-title">
+              <header class="section-title">
+                <span class="section-number" aria-hidden="true">04</span>
+                <h2 id="admissions-title">Acreditaciones</h2>
+              </header>
+              <div class="admissions-panel">
+                <figure>
+                  <img
+                    src="imagenes/acreditaciones.webp"
+                    alt="Asistentes con sus acreditaciones en la entrada de Web Summit"
+                    width="900"
+                    height="585"
+                    loading="lazy"
+                  />
+                  <figcaption>Archivo Web Summit, Lisboa 2023</figcaption>
+                </figure>
+                <div class="admissions-content">
+                  <div class="admissions-head">
+                    <div>
+                      <h3>Personas registradas</h3>
+                      <p id="admission-count"></p>
+                    </div>
+                    <button type="button" class="button button-primary" id="admission-open">
+                      <svg aria-hidden="true"><use href="#i-plus" /></svg> Dar de alta
+                    </button>
+                  </div>
+                  <ul
+                    id="admission-list"
+                    class="admission-list"
+                    aria-label="Personas acreditadas"
+                  ></ul>
+                  <p class="admissions-empty" id="admission-empty">
+                    Aquí aparecerán los asistentes, expositores y miembros del equipo que registres.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+          <details class="photo-credits" id="creditos">
+            <summary>Créditos de fotografía</summary>
+            <ul>
+              <li>
+                Escenario principal.
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:Web_Summit_Rio_2025_-_0367_(54483324023).jpg"
+                  >Sam Barnes / Web Summit Rio vía Sportsfile</a
+                >, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.
+              </li>
+              <li>
+                Piso de exhibición.
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:Paris_-_Salon_VivaTech_2025_-_13.jpg"
+                  >© Peter Potrowl</a
+                >, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+              </li>
+              <li>
+                Acceso y registro.
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:Web_Summit_Rio_2023_-_3915_(52866763572).jpg"
+                  >Stephen McCarthy / Web Summit Rio vía Sportsfile</a
+                >, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.
+              </li>
+              <li>
+                Producción.
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:A_sound_technician_is_focused_on_adjusting_the_mixing_console.jpg"
+                  >Shixart1985</a
+                >, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.
+              </li>
+              <li>
+                Acreditaciones.
+                <a
+                  href="https://commons.wikimedia.org/wiki/File:2023_-_Registration_RCZ_9300_(53329939394).jpg"
+                  >Ramsey Cardy / Web Summit vía Sportsfile</a
+                >, <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.
+              </li>
+            </ul>
+            <p>Fotografías de archivo reencuadradas y convertidas a WebP.</p>
+          </details>
+          <footer>
+            <span>Misión Expo / Mayo 2027</span
+            ><span>Simulacro con datos ficticios de Imaginatec</span>
+          </footer>
+        </div>
+      </main>
+    </div>
+    <dialog class="sheet" id="report-dialog" aria-labelledby="report-title">
+      <form id="report-form">
+        <header class="sheet-header">
+          <div>
+            <p class="kicker">Bitácora de operación</p>
+            <h2 id="report-title">Reportar incidente</h2>
+            <p class="sheet-intro">Indica dónde ocurrió y qué necesita el equipo.</p>
+          </div>
+          <button class="icon-button" type="button" data-close aria-label="Cerrar">
+            <svg><use href="#i-close" /></svg>
+          </button>
+        </header>
+        <div class="sheet-body">
+          <label id="zone-label" for="zone-picker">Zona</label>
+          <div class="zone-dropdown">
+            <input type="hidden" id="zone" name="zone" />
+            <button
+              type="button"
+              id="zone-picker"
+              class="zone-picker"
+              role="combobox"
+              aria-labelledby="zone-label zone-name"
+              aria-controls="zone-options"
+              aria-expanded="false"
+            >
+              <span class="zone-option-code" id="zone-code"></span>
+              <span class="zone-option-name" id="zone-name"></span>
+              <svg class="zone-chevron" aria-hidden="true" viewBox="0 0 24 24">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </button>
+            <ul
+              class="zone-options"
+              id="zone-options"
+              role="listbox"
+              aria-labelledby="zone-label"
+              hidden
+            ></ul>
+          </div>
+          <fieldset>
+            <legend>Prioridad</legend>
+            <div class="choice-list">
+              <label class="choice">
+                <input
+                  type="radio"
+                  name="priority"
+                  value="n"
+                  aria-labelledby="priority-n-name"
+                  aria-describedby="priority-n-hint"
+                  checked
+                />
+                <svg class="choice-icon" aria-hidden="true"><use href="#i-clock" /></svg>
+                <span>
+                  <span class="choice-name" id="priority-n-name">Normal</span>
+                  <span class="choice-hint" id="priority-n-hint">Puede esperar.</span>
+                </span>
+                <svg class="choice-check" aria-hidden="true"><use href="#i-check" /></svg>
+              </label>
+              <label class="choice">
+                <input
+                  type="radio"
+                  name="priority"
+                  value="u"
+                  aria-labelledby="priority-u-name"
+                  aria-describedby="priority-u-hint"
+                />
+                <svg class="choice-icon" aria-hidden="true"><use href="#i-alert" /></svg>
+                <span>
+                  <span class="choice-name" id="priority-u-name">Urgente</span>
+                  <span class="choice-hint" id="priority-u-hint">Requiere atención inmediata.</span>
+                </span>
+                <svg class="choice-check" aria-hidden="true"><use href="#i-check" /></svg>
+              </label>
+            </div>
+          </fieldset>
+          <label for="description">¿Qué pasó?</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="3"
+            maxlength="85"
+            required
+            aria-describedby="description-hint"
+            placeholder="Ej. El proyector dejó de mostrar imagen."
+          ></textarea>
+          <p class="hint" id="description-hint">Hasta 85 caracteres. Usa datos ficticios.</p>
+        </div>
+        <p class="form-error" data-error role="alert" hidden></p>
+        <div class="sheet-actions">
+          <button class="button button-outline" type="button" data-close>Cancelar</button
+          ><button class="button button-primary" type="submit">
+            Guardar incidente <svg aria-hidden="true"><use href="#i-arrow" /></svg>
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="sheet" id="admission-dialog" aria-labelledby="admission-title">
+      <form id="admission-form">
+        <header class="sheet-header">
+          <div>
+            <p class="kicker">Acceso al recinto</p>
+            <h2 id="admission-title">Dar de alta a una persona</h2>
+            <p class="sheet-intro">Registra su nombre y el tipo de gafete que usará.</p>
+          </div>
+          <button class="icon-button" type="button" data-close aria-label="Cerrar">
+            <svg aria-hidden="true"><use href="#i-close" /></svg>
+          </button>
+        </header>
+        <div class="sheet-body">
+          <label for="attendee-name">Nombre para el gafete</label>
+          <input
+            id="attendee-name"
+            name="name"
+            type="text"
+            maxlength="64"
+            placeholder="Ej. Alex Rivera"
+            required
+            autocomplete="off"
+            autofocus
+            aria-describedby="admission-hint"
+          />
+          <p class="hint" id="admission-hint">Usa un nombre ficticio para el simulacro.</p>
+          <fieldset>
+            <legend>Tipo de acreditación</legend>
+            <div class="choice-list">
+              <label class="choice">
+                <input
+                  type="radio"
+                  name="role"
+                  value="a"
+                  aria-labelledby="role-a-name"
+                  aria-describedby="role-a-hint"
+                  checked
+                />
+                <svg class="choice-icon" aria-hidden="true"><use href="#i-ticket" /></svg>
+                <span>
+                  <span class="choice-name" id="role-a-name">Asistente</span>
+                  <span class="choice-hint" id="role-a-hint">Visita la expo.</span>
+                </span>
+                <svg class="choice-check" aria-hidden="true"><use href="#i-check" /></svg>
+              </label>
+              <label class="choice">
+                <input
+                  type="radio"
+                  name="role"
+                  value="e"
+                  aria-labelledby="role-e-name"
+                  aria-describedby="role-e-hint"
+                />
+                <svg class="choice-icon" aria-hidden="true"><use href="#i-stand" /></svg>
+                <span>
+                  <span class="choice-name" id="role-e-name">Expositor</span>
+                  <span class="choice-hint" id="role-e-hint">Presenta en un stand.</span>
+                </span>
+                <svg class="choice-check" aria-hidden="true"><use href="#i-check" /></svg>
+              </label>
+              <label class="choice">
+                <input
+                  type="radio"
+                  name="role"
+                  value="p"
+                  aria-labelledby="role-p-name"
+                  aria-describedby="role-p-hint"
+                />
+                <svg class="choice-icon" aria-hidden="true"><use href="#i-crew" /></svg>
+                <span>
+                  <span class="choice-name" id="role-p-name">Personal</span>
+                  <span class="choice-hint" id="role-p-hint"
+                    >Apoya en la operación del recinto.</span
+                  >
+                </span>
+                <svg class="choice-check" aria-hidden="true"><use href="#i-check" /></svg>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <p class="form-error" data-error role="alert" hidden></p>
+        <div class="sheet-actions">
+          <button class="button button-outline" type="button" data-close>Cancelar</button
+          ><button class="button button-primary" type="submit">
+            Guardar acreditación <svg aria-hidden="true"><use href="#i-arrow" /></svg>
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <dialog class="sheet" id="connection-dialog" aria-labelledby="connection-title">
+      <form id="connection-form">
+        <header class="sheet-header">
+          <div>
+            <p class="kicker">Espacio compartido</p>
+            <h2 id="connection-title">Conectar al aula</h2>
+            <p class="sheet-intro">Usa el mismo tablero que el resto del grupo.</p>
+          </div>
+          <button class="icon-button" type="button" data-close aria-label="Cerrar">
+            <svg><use href="#i-close" /></svg>
+          </button>
+        </header>
+        <div class="sheet-body">
+          <label for="connection-key">Conexión del mentor</label>
+          <input
+            id="connection-key"
+            name="key"
+            type="password"
+            autocomplete="off"
+            placeholder="Pega aquí la conexión"
+            aria-describedby="connection-hint"
+            required
+          />
+          <div class="connection-note" id="connection-hint">
+            <svg aria-hidden="true"><use href="#i-link" /></svg>
+            <div>
+              <strong>Una conexión para todo el grupo</strong>
+              <p>
+                Pega la conexión temporal que comparte tu mentor. Usa la misma en cada dispositivo.
+              </p>
+            </div>
+          </div>
+        </div>
+        <p class="form-error" data-error role="alert" hidden></p>
+        <div class="sheet-actions">
+          <button class="button button-outline" type="button" id="leave-room" hidden>
+            Volver a simulación</button
+          ><button class="button button-primary" type="submit">
+            Conectar <svg aria-hidden="true"><use href="#i-arrow" /></svg>
+          </button>
+        </div>
+      </form>
+    </dialog>
+    <div id="notice" class="notice" role="status" aria-live="polite"></div>
+  </body>
+</html>
