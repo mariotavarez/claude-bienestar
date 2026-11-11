@@ -1,5 +1,5 @@
 ---
-name: ana-interfaz
+name: ana-ui
 description: Construye el formulario y la cobertura de personal de Misión Expo.
 tools: Read, Grep, Glob, Edit, Write
 model: inherit

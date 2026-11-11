@@ -1,5 +1,5 @@
 ---
-name: equipo-expo
+name: expo-team
 description: Coordina a Leo y Ana para ampliar Misión Expo.
 disable-model-invocation: true
 ---

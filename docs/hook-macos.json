@@ -7,7 +7,7 @@
           {
             "type": "command",
             "shell": "bash",
-            "command": "printf \"%s\\n\" \"- Edición realizada con Edit/Write. Revisar el diff.\" >> \"$CLAUDE_PROJECT_DIR/docs/bitacora.md\""
+            "command": "printf \"%s\\n\" \"- Edición realizada con Edit/Write. Revisar el diff.\" >> \"$CLAUDE_PROJECT_DIR/docs/activity-log.md\""
           }
         ]
       }

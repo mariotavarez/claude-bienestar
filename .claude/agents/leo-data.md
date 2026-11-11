@@ -1,5 +1,5 @@
 ---
-name: leo-datos
+name: leo-data
 description: Implementa el registro y la llegada del personal de Misión Expo.
 tools: Read, Grep, Glob, Edit, Write
 model: inherit

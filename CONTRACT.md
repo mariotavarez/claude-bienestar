@@ -3,9 +3,9 @@
 La coordinación de la expo necesita que los voluntarios reporten incidentes y que producción pueda resolverlos desde otro dispositivo. El tablero, el guardado y el cierre están preparados. Este contrato sirve como referencia para comprender la evidencia y los límites del simulacro.
 
 - expo.js enlaza los controles con ExpoOperations.report y ExpoOperations.resolve.
-- datos.js convierte filas guardadas en incidentes y calcula cuáles están resueltos.
-- servicio.js gestiona la simulación en el navegador y la conexión al aula. ExpoService.append recibe un registro con id y asunto y devuelve el registro guardado.
-- operaciones.js contiene las operaciones de reporte y cierre.
+- data.js convierte filas guardadas en incidentes y calcula cuáles están resueltos.
+- service.js gestiona la simulación en el navegador y la conexión al aula. ExpoService.append recibe un registro con id y asunto y devuelve el registro guardado.
+- operations.js contiene las operaciones de reporte y cierre.
 
 Cada fila tiene un ID UUID y un asunto de hasta 100 caracteres. Un evento nuevo puede abrir o cerrar un incidente, o registrar una acreditación.
 

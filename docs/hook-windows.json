@@ -7,7 +7,7 @@
           {
             "type": "command",
             "shell": "powershell",
-            "command": "Add-Content -LiteralPath \"$env:CLAUDE_PROJECT_DIR/docs/bitacora.md\" -Value \"- Edición realizada con Edit/Write. Revisar el diff.\" -Encoding utf8"
+            "command": "Add-Content -LiteralPath \"$env:CLAUDE_PROJECT_DIR/docs/activity-log.md\" -Value \"- Edición realizada con Edit/Write. Revisar el diff.\" -Encoding utf8"
           }
         ]
       }

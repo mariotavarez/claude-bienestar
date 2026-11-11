@@ -23,6 +23,6 @@ Comprueba la portada y los controles en escritorio y móvil. Abre un incidente c
 
 ## Créditos
 
-- **Fotografía.** [Paris - Salon VivaTech 2025 - 9](https://commons.wikimedia.org/wiki/File:Paris_-_Salon_VivaTech_2025_-_9.jpg), © Peter Potrowl, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Redimensionada y convertida a WebP como `imagenes/vivatech-pabellon.webp`. La interfaz ajusta el encuadre al tamaño disponible.
+- **Fotografía.** [Paris - Salon VivaTech 2025 - 9](https://commons.wikimedia.org/wiki/File:Paris_-_Salon_VivaTech_2025_-_9.jpg), © Peter Potrowl, [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Redimensionada y convertida a WebP como `images/vivatech-hall.webp`. La interfaz ajusta el encuadre al tamaño disponible.
 - **Fotografías de zona y acceso.** El apartado «Créditos de fotografía» de `index.html` enlaza los originales, autores y licencias de cada fotografía reencuadrada.
-- **Tipografía.** Manrope, The Manrope Project Authors. La licencia SIL Open Font License 1.1 se incluye en `fuentes/manrope-OFL.txt`.
+- **Tipografía.** Manrope, The Manrope Project Authors. La licencia SIL Open Font License 1.1 se incluye en `fonts/manrope-OFL.txt`.
