@@ -41,7 +41,7 @@
   }
   function zonePhoto(id, className) {
     const photo = element('img', className);
-    photo.src = 'images/zona-' + id.toLowerCase() + '.webp';
+    photo.src = 'images/zone-' + id.toLowerCase() + '.webp';
     photo.width = 840;
     photo.height = 520;
     photo.alt = '';
