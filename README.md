@@ -1,33 +1,28 @@
-# Misión Expo · punto de partida
+# Misión Expo · práctica de dos horas
 
-La app de la expo de mayo 2027 abre sin instalar dependencias. Durante la clase
-construiremos Personal y cobertura usando Claude Code y un equipo de agentes.
+La app abre sin instalar dependencias. En clase crearemos únicamente:
+1. .claude/agents/leo-data.md
+2. .claude/agents/ana-ui.md
+3. .claude/skills/expo-team/SKILL.md
 
-1. Extrae toda la carpeta y abre index.html en el navegador.
-2. Abre la carpeta en VS Code y Terminal → Nueva terminal.
-3. Ejecuta `claude --permission-mode default`. Dentro de Claude usa /model para
-   elegir Sonnet disponible.
-4. Sigue los ocho pasos del aula y la guía del alumno.
+## Ya preparado
+- docs/task.md · problema, encargos, activación y checklist.
+- docs/plan.md · entregas y ritmo de la clase.
+- .claude/rules/project.md · una sola regla de datos e interfaz.
+- CLAUDE.md, DESIGN.md y CONTRACT.md · contexto de la app.
 
-Aula, presentación, prompts y descargas: https://imaginatec.tech/sesion-3/
+## Empieza
+Extrae toda la carpeta, abre index.html en el navegador y la carpeta en VS Code.
+En Terminal → Nueva terminal ejecuta `claude --permission-mode default`.
+Empieza con Sonnet disponible. Sigue la guía del aula; no necesitas practicar
+una lista de comandos. Los agentes y la skill se crean con Claude durante la
+explicación. Las carpetas vacías se conservan en Git mediante .gitkeep.
 
-## Carpetas para construir con el grupo
+Al pedir construir Personal y cobertura, Claude puede elegir expo-team por su
+description. La skill coordina a Leo y Ana. Si no se activa, escribe /expo-team.
+También puedes nombrar un agente: «Usa leo-data para revisar la validación».
+Comprueba la delegación observada; no asumas que el nombre obliga a ejecutarla.
 
-- .claude/agents/ para Leo, Ana y Eva.
-- .claude/rules/ para reglas de datos, interfaz y revisión.
-- .claude/skills/expo-team/references/ para la skill y sus referencias.
-- docs/ para encargo, plan y tarea escrita del equipo.
-- docs/references/ para ejemplos y comprobaciones.
-
-Estas carpetas llegan sin documentos .md. Los archivos .gitkeep conservan la
-estructura en Git. En clase definimos qué debe pasar y pedimos a Claude que
-redacte los documentos. Los revisamos y los guardamos antes de implementar.
-README.md, DESIGN.md y CONTRACT.md son referencias de la aplicación preparada.
-CLAUDE.md y los documentos del equipo se crean durante la práctica.
-
-Primero guardamos las instrucciones en docs/. Después enviamos mensajes cortos
-para que Claude lea el documento y ejecute una tarea concreta. Al terminar
-comprobamos registro, llegada y cobertura en el navegador.
-
-El ZIP resuelto y la guía privada del mentor contienen las soluciones completas.
-Usa nombres ficticios. La conexión del aula y Google Sheets los prepara el mentor.
+Aula y guías: https://imaginatec.tech/sesion-3/
+El ZIP resuelto conserva la app terminada y los tres archivos de referencia.
+Usa nombres ficticios. El mentor prepara conexión y Google Sheets.
