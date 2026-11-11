@@ -35,3 +35,20 @@ La conexión del aula dura 7 días desde que el mentor la crea. Pégala en «Con
 «Desconectar aula» olvida la conexión de este navegador y vuelve a la simulación local. Si vence o el mentor la renueva, la app pide reconectar. Un fallo de red conserva la conexión y no cambia silenciosamente al modo local. No se suben automáticamente capturas hechas antes de conectar.
 
 Google Sheets recibe los registros cuando el mentor ejecuta Orbit → Sincronizar ahora o activa la sincronización cada minuto. No incluyas la clave en Git, documentos ni prompts de Claude.
+
+## Reto opcional · Eva, MCP y reportes PDF
+
+Después de la práctica principal: https://imaginatec.tech/sesion-3/#reto-reportes
+Descarga el kit separado con docs/reports.md. Conecta Claude Code al MCP remoto, crea eva-reports y pídele un reporte de la misma hoja de Google Sheets.
+No requiere Node ni Python; el MCP no usa la conexión del aula ni escribe en la hoja.
+
+Kit opcional: https://imaginatec.tech/materiales/modulo-3/Mision-Expo-Reto-Reportes.zip
+
+En la terminal de VS Code, fuera de Claude:
+
+```sh
+claude mcp add --transport http --scope local expo_sheets https://imaginatec.tech/api/mcp/mision-expo
+claude mcp get expo_sheets
+```
+
+Dentro de Claude, `/mcp` comprueba las herramientas. Crea Eva siguiendo docs/reports.md del kit. Su definición completa está en la guía privada del mentor.
