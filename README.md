@@ -1,29 +1,49 @@
-# Misión Expo con Claude Code
+# Misión Expo · Arquitectura de Claude Code
 
-El reto es crear dos agentes y una skill y usarlos para ampliar la app con Personal y cobertura.
+La aplicación abre sin instalación. En clase crearemos un equipo de tres agentes
+y una skill para añadir Personal y cobertura al tablero de la expo de mayo 2027.
 
-1. Extrae el ZIP completo y abre index.html en el navegador.
-2. Abre la carpeta en VS Code y ejecuta claude --permission-mode default en la terminal.
-3. Con Claude revisa docs/brief.md y crea las reglas y referencias del paso 3. Aprueba el plan y guárdalo en docs/plan.md.
-4. Completa los agentes leo-data y ana-ui con los prompts del aula.
-5. Completa la skill /expo-team. La receta delega primero los datos a Leo y después la interfaz a Ana.
-6. Ejecuta /expo-team y comprueba el padrón, la llegada y la cobertura en el navegador.
-7. Entrega la app y los archivos de ambos agentes y de la skill.
+## Empieza aquí
+1. Extrae toda la carpeta y abre index.html en el navegador.
+2. Abre la carpeta en VS Code. En Terminal → Nueva terminal ejecuta
+   `claude --permission-mode default`.
+3. Dentro de Claude usa /model y elige Sonnet disponible.
+4. Sigue docs/workshop.md y los ocho pasos del aula.
 
-El ZIP inicial incluye plantillas pendientes. El resuelto conserva los archivos completos de referencia. Usa nombres ficticios.
+Aula, presentación, prompts y guías: https://imaginatec.tech/sesion-3/
 
-## Qué hace cada agente
+## Qué crearemos juntos
+| Pieza | Responsabilidad | Modelo propuesto |
+| --- | --- | --- |
+| Leo · leo-data | Datos, validación, registro y llegada | sonnet |
+| Ana · ana-ui | Formulario, estados, foco y cobertura | sonnet |
+| Eva · eva-review | Checklist y hallazgos de lectura | haiku |
+| /expo-team | Coordina entregas desde la sesión principal | Modelo de la sesión |
 
-Leo trabaja en operations.js. Implementa registerStaff, arrive y staff con el servicio existente. Ana trabaja en index.html, expo.js y expo.css. Conecta los controles con las funciones que entrega Leo.
+Opus es una opción para decisiones complejas o fallos difíciles. Lee
+`docs/model-guide.md` para disponibilidad, límites y cambio de contexto.
 
-## Demostración del mentor
+## Inicial y resuelto
+El inicial conserva hojas elaboradas en workshop/templates/. Durante la práctica
+Claude crea los agentes activos en .claude/agents/ y la skill en .claude/skills/.
+Las reglas y referencias también se crean con el grupo. No son archivos vacíos.
+El ZIP resuelto incluye las definiciones completas y la app terminada.
 
-Dos dispositivos pueden conectarse al mismo espacio del aula para compartir registros y llegadas. Apps Script copia los eventos a Google Sheets cuando el mentor sincroniza.
+Leo entrega el contrato antes de que Ana implemente la pantalla. Eva revisa
+archivos y el grupo ejecuta las pruebas. El alcance de cada agente es una
+instrucción y no una restricción técnica del sistema de archivos.
 
-El MCP de lectura de incidentes es una demostración opcional. El proceso del mentor requiere Node 20 o superior y MISION_EXPO_TOKEN en su entorno privado. No lo necesita el alumno para abrir la app ni crear los agentes.
+## Registro compartido
+Dos dispositivos con la misma conexión del aula comparten registros y llegadas.
+Apps Script copia los eventos a Google Sheets cuando el mentor sincroniza.
+La simulación local funciona en dos pestañas del mismo navegador.
+
+## Demostración opcional del mentor
+MCP Expo ofrece lectura de incidentes. Su proceso necesita Node 20 o superior
+y MISION_EXPO_TOKEN en el entorno privado del mentor. El alumno no instala Node
+para abrir la app, crear agentes o completar la función.
 
     claude mcp add --transport stdio --scope local mision-expo -- node ./mcp.mjs
 
-Comprueba con /mcp las herramientas disponibles.
-
-Los nombres de los archivos y carpetas están en inglés. El contenido del taller está en español.
+Comprueba /mcp. No guardes conexiones ni tokens en prompts o archivos del taller.
+Todos los nombres de archivos están en inglés; el contenido didáctico está en español.

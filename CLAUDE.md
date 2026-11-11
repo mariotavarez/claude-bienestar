@@ -1,11 +1,25 @@
 # Misión Expo
 
-Construir Personal y cobertura con Claude Code, los agentes leo-data y ana-ui y la skill /expo-team.
+Amplía la app con Personal y cobertura usando agentes y la skill /expo-team.
+Consulta docs/workshop.md para seguir la creación del equipo durante el taller.
 
-- Lee docs/brief.md y docs/plan.md antes de implementar. Pide aprobación del plan.
-- Cada agente lee sus reglas en .claude/rules/ y su referencia en docs/references/. Ana consulta DESIGN.md y Leo consulta CONTRACT.md.
-- Leo implementa el registro, la llegada y la proyección del padrón en operations.js.
-- Ana implementa formulario lateral, lista y cobertura en index.html, expo.js y expo.css. Usa el contrato que entrega Leo.
-- Delega primero a Leo y espera su resultado antes de encargar la interfaz a Ana.
-- Conserva incidentes, Acreditaciones y CSV. Usa datos ficticios y mantén las conexiones fuera de prompts y archivos.
-- Anota en docs/activity-log.md solo lo comprobado. El usuario verifica el navegador y decide si acepta el resultado.
+## Antes de editar
+Lee docs/brief.md, CONTRACT.md, DESIGN.md y el plan aprobado en docs/plan.md.
+Si falta aprobación o una decisión cambia el alcance, muestra la propuesta y espera.
+Consulta docs/model-guide.md antes de escoger o cambiar modelos.
+
+## Equipo que creamos en clase
+- Leo (sonnet) implementa operaciones y entrega el contrato de funciones.
+- Ana (sonnet) recibe ese contrato y construye la interfaz con DESIGN.md.
+- Eva (haiku) revisa el checklist con lectura de archivos. No ejecuta pruebas.
+- /expo-team coordina en la sesión principal y espera cada entrega.
+Cada agente lee las reglas y referencias indicadas en su definición.
+Los archivos de workshop/templates/ son hojas de trabajo, no agentes activos.
+
+## Criterios comunes
+Conserva incidentes, acreditaciones y CSV. No añadas dependencias.
+Usa nombres ficticios. Mantén conexiones, tokens y datos privados fuera de docs.
+Documenta funciones públicas con JSDoc. Reutiliza el diseño y servicio existentes.
+El reparto de archivos es una instrucción; las herramientas no lo aíslan.
+Anota solo resultados observados y distingue inspección de prueba en navegador.
+El usuario acepta la entrega después de comprobarla.
