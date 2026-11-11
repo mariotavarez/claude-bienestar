@@ -228,7 +228,10 @@
     } catch {
       if (revision === state.revision && ExpoService.shared()) {
         select('#session-state').classList.remove('connected');
-        select('#session-label').textContent = 'Sin actualizar';
+        select('#session-label').textContent = ExpoService.expired()
+          ? 'Conexión vencida'
+          : 'Sin actualizar';
+        if (ExpoService.expired()) select('#connection-label').textContent = 'Reconectar aula';
       }
     } finally {
       state.refreshing = false;
@@ -423,7 +426,9 @@
       updateRows(rows);
       showConnection();
       connectionDialog.close();
-      flash('Aula conectada. El tablero consulta el espacio del grupo.');
+      flash(ExpoService.remembered()
+        ? 'Aula conectada. Este navegador recordará la conexión al recargar.'
+        : 'Aula conectada. Este navegador no permite recordarla; pégala de nuevo al recargar.');
     }, connectionForm);
   });
   select('#leave-room').addEventListener('click', () => {
@@ -433,7 +438,7 @@
     updateRows(ExpoService.disconnect());
     showConnection();
     connectionDialog.close();
-    flash('Volviste a la simulación local.');
+    flash('Conexión olvidada en este navegador. Volviste a la simulación local.');
   });
   zoneGrid.addEventListener('click', (event) => {
     const room = event.target.closest('[data-zone-button]');

@@ -26,3 +26,12 @@ Comprueba la delegación observada; no asumas que el nombre obliga a ejecutarla.
 Aula y guías: https://imaginatec.tech/sesion-3/
 El ZIP resuelto conserva la app terminada y los tres archivos de referencia.
 Usa nombres ficticios. El mentor prepara conexión y Google Sheets.
+
+
+## Conexión compartida
+
+La conexión del aula dura 7 días desde que el mentor la crea. Pégala en «Conectar aula» una sola vez: este navegador la recuerda al recargar y al volver a abrir el mismo proyecto desde la misma dirección. Otro navegador, perfil, equipo o puerto necesita que la pegues de nuevo.
+
+«Desconectar aula» olvida la conexión de este navegador y vuelve a la simulación local. Si vence o el mentor la renueva, la app pide reconectar. Un fallo de red conserva la conexión y no cambia silenciosamente al modo local. No se suben automáticamente capturas hechas antes de conectar.
+
+Google Sheets recibe los registros cuando el mentor ejecuta Orbit → Sincronizar ahora o activa la sincronización cada minuto. No incluyas la clave en Git, documentos ni prompts de Claude.
