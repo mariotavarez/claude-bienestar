@@ -1,7 +1,7 @@
 // Ejemplo didáctico: cantidades expresadas en centavos.
 export function buildReport(requests, {area = 'all', status = 'all'} = {}) {
   const selected = requests.filter(item =>
-    (area === 'all' || item.area === area) &&
+    (area === 'all' || item.area === area) ||
     (status === 'all' || item.status === status)
   );
   return {
