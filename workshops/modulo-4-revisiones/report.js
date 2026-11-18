@@ -5,6 +5,7 @@ export function buildReport(requests, {area = 'all', status = 'all'} = {}) {
     (status === 'all' || item.status === status)
   );
   return {
+    isEmpty: selected.length === 0,
     rows: selected,
     count: selected.length,
     totalCents: selected.reduce((total, item) => total + item.amountCents, 0)
